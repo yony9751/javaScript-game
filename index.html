@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>자바스크립트 게임만들기</title>
+	<link href="http://www.imbc.com/commons/css/base-v2.css" rel="stylesheet" type="text/css" charset="euc-kr">
+	<script type="text/javascript" src="http://www.imbc.com/commons/libs/jquery-1.12.3.min.js"></script>
+	<!--[if lt IE 9]><script src="http://www.imbc.com/commons/libs/html5shiv.min.js"></script><![endif]-->
+	<style>	
+	body{margin: 30px;font-family: '나눔고딕'; font-size: 14px;}
+	h1{margin-bottom:10px;font-size: 16px}
+	input,button{margin-bottom:20px;width:100px;line-height: 25px;}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>1. 자바스크립트 기초와 끝말잇기 (O)</h1>
+		<div class="content">
+			<button type="button" onclick="game1();">끝말잇기 시작</button>
+		</div>
+		<div>input 안에서 동작하게</div>
+		<div id="first">제로초</div> <input type="text" id="lastWord"> <button id="button">입력</button>
+		<script>
+			document.getElementById('button').addEventListener('click', function (){ //콜백함수
+				var first = document.getElementById('first');
+				var input = document.getElementById('lastWord').value;
+				if(first.textContent[first.textContent.length -1] === input[0]){
+					alert("딩동댕");
+					first.textContent = input;
+				}else{
+					alert("땡");
+				}
+			})
+		</script>
+		<h1>2. 객체 기본과 구구단 게임</h1>
+		<div class="content">
+			<button type="button" onclick="game2();">구구단</button>
+		</div>
+	</div>
+
+	<script>
+		var game1 = function(){
+			var word ="제로초";			
+			//while(true){
+			for(word; true;){
+				var next = prompt(word);
+				if(next.length === 1){
+					alert("두 글자 이상을 입력해주세요")
+				}else{
+					if(word[word.length - 1] === next[0]){
+						word = next;
+						} else if (next === ""){  //빈칸인경우
+							alert("빈칸 no!")
+						} else {
+							alert("틀렸습니다");
+						}
+					}
+				}
+			}
+		var game2 = function(){
+			 // while(true){ // 문제 반복해서 냄
+				var num1 = Math.ceil(Math.random()*9) // 1~9 추출
+			   var num2 = Math.ceil(Math.random()*9) // 1~9 추출
+			   var result = num1 * num2
+				var 조건 = true;
+				while(조건){ //답이 틀리면 반복
+					var 답 = prompt(String(num1) + '곱하기' + String(num2) +'는?')
+					if(result === Number(답)){
+					alert('딩동댕');
+					조건 = false;
+					}else{
+					alert('땡')
+					}
+				}
+			}
+		// }
+	</script>
+</body>
+</html>
