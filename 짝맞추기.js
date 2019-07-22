@@ -280,3 +280,4 @@ function 카드공장(name, att, hp){
 // 과
 
 // var 카드 = Object.create(프로토타입);
+
